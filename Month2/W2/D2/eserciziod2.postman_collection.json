@@ -1,0 +1,23 @@
+{
+	"info": {
+		"_postman_id": "7c3f5576-ddd8-42ee-943c-75872bc31704",
+		"name": "eserciziod2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24316290"
+	},
+	"item": [
+		{
+			"name": "d2",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

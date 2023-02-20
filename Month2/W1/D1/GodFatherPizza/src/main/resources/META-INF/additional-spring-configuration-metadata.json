@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "godfatherpizza.costocoperto",
+    "type": "java.lang.String",
+    "description": "A description for 'godfatherpizza.costocoperto'"
+  },
+  {
+    "name": "ogging.level.root",
+    "type": "java.lang.String",
+    "description": "A description for 'ogging.level.root'"
+  }
+]}
