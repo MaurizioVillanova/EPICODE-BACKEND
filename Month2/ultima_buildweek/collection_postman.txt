@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "0db47925-6ff1-454b-b84f-cf508bb1cb34",
+		"name": "ENERGY_SERVICE_INDIRIZZI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25162979"
+	},
+	"item": [
+		{
+			"name": "GET_INDIRIZZI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/indirizzi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"indirizzi"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
+
+--------------------------------------------------------------------
+
+
+{
+	"info": {
+		"_postman_id": "fd0f5db6-d585-46d9-b9f7-6dc2a3d643a7",
+		"name": "EPIC_ENERGY_SERVICES_CLIENTI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25162979"
+	},
+	"item": [
+		{
+			"name": "GET_ALL_CLIENTI",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET_CLIENTE_ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get_cliente_nome",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET_CLIENTE_SEDE_LEGALE",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTE_NOME_PARZIALE",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTI_FATTURATO_MAGGIOREDI",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTI_RAGIONE_SOCIALE",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTI_DATACONTATTOAFTER",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "AGGIUNGI_CLIENTE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n            \n            \"cognomeContatto\": \"PIPPO\",\n            \"dataInserimento\": \"2020-10-27T05:11:04.276+00:00\",\n            \"dataUltimoContatto\": \"2021-02-24T22:27:10.111+00:00\",\n            \"email\": \"graziano.bernardi@email.it\",\n            \"emailContatto\": \"dindo.pellegrini@email.it\",\n            \"fatturatoAnnuale\": 232636.18,\n            \"nomeContatto\": \"PLUTO\",\n            \"partitaIva\": \"61254797117\",\n            \"pec\": \"damiano.romano@hotmail.com\",\n            \"ragioneSociale\": \"Costantin s.r.l.\",\n            \"telefono\": \"349 174 605\",\n            \"telefonoContatto\": \"079-965-2582\",\n            \"tipoCliente\": \"SRL\"\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/aggiungi/cliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"aggiungi",
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ELIMINA_CLIENTE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/elimina/cliente/105",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"elimina",
+						"cliente",
+						"105"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AGGIUNGI_CLIENTE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n            \"id\": 34,\n            \"cognomeContatto\": \"D'amico\",\n            \"dataInserimento\": \"2019-05-25T12:22:31.691+00:00\",\n            \"dataUltimoContatto\": \"2021-03-09T03:22:11.778+00:00\",\n            \"email\": \"alighieri.rizzo@hotmail.com\",\n            \"emailContatto\": \"orfeo.dangelo@libero.it\",\n            \"fatturatoAnnuale\": 127426.47,\n            \"nomeContatto\": \"Lucia\",\n            \"partitaIva\": \"22556705387\",\n            \"pec\": \"manfredi.silvestri@yahoo.com\",\n            \"ragioneSociale\": \"Longo-Costantin SPA\",\n            \"telefono\": \"+31 7676 71408396\",\n            \"telefonoContatto\": \"1-347-230-2085\",\n            \"tipoCliente\": \"SRL\"\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/aggiungi/cliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"aggiungi",
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MODIFICA_CLIENTE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \n            \"cognomeContatto\": \"Martini\",\n            \"dataInserimento\": \"2018-09-21T20:59:45.434+00:00\",\n            \"dataUltimoContatto\": \"2021-03-22T10:45:30.976+00:00\",\n            \"email\": \"laerte.bernardi@yahoo.com\",\n            \"emailContatto\": \"maria.damico@email.it\",\n            \"fatturatoAnnuale\": 41330.22,\n            \"nomeContatto\": \"Aroldo\",\n            \"partitaIva\": \"39705559358\",\n            \"pec\": \"iacopo.valentini@email.it\",\n            \"ragioneSociale\": \"Sala, Lombardi e Ferraro Group\",\n            \"telefono\": \"373 690 571\",\n            \"telefonoContatto\": \"1-013-143-4193\",\n            \"tipoCliente\": \"SRL\"\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/modifica/cliente/34",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modifica",
+						"cliente",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTI_RANGE_DATE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/clienti_byDataInserimentoBetween?startDate=2020-01-01&endDate=2021-01-01?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clienti_byDataInserimentoBetween"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-01-01?page=0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTI_DATAINSERIMENTO_BEFORE",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
+
+------------------------------------------------------------------------
+
+{
+	"info": {
+		"_postman_id": "f738e14a-c982-4bd6-9aa7-2bc5657968cd",
+		"name": "EPIC_ENERGY_SERVICE_FATTURE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25162979"
+	},
+	"item": [
+		{
+			"name": "GET_FATTURE_ID_CLIENTI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/fatture-cliente/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fatture-cliente",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_fatture_NOME_CLIENTE",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "FATTURE_ANNO",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "FATTURE_STATO",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "FATTURE_RANGE_IMPORTI",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "AGGIUNGI_FATTURA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n         \n            \"anno\": 2023,\n            \"data\": \"2019-02-10T05:05:07.199+00:00\",\n            \"importo\": 985.58,\n            \"numero\": 3\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/aggiungi/fattura",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"aggiungi",
+						"fattura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MODIICA_FATTURA",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": 6,\n            \"anno\": 2019,\n            \"data\": \"2019-11-16T14:31:21.488+00:00\",\n            \"importo\": 595.98,\n            \"numero\": 6\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/modifica/fattura/6300",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modifica",
+						"fattura",
+						"6300"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ELIMINA_FATTURA",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/elimina/fattura/70",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"elimina",
+						"fattura",
+						"70"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FATTURA_DATA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dataFattura?startDate=2020-01-01?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dataFattura"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-01-01?page=0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

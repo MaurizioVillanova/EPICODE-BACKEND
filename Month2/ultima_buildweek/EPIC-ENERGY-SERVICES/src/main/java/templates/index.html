@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epic Energy</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+	crossorigin="anonymous"></script>
+<style>
+.navbar {
+	background-color: transparent !important;
+}
+
+.navbar-brand {
+	padding: 0;
+}
+
+.carousel-item img {
+	width: 100%;
+	height: 500px;
+	object-fit: cover;
+	border: none;
+}
+
+.icons p {
+	font-weight: bolder;
+}
+
+.sole {
+	font-size: 70px;
+	color: rgb(255, 206, 12);
+}
+
+.vento {
+	font-size: 70px;
+	color: rgb(121, 122, 122);
+}
+
+.acqua {
+	font-size: 70px;
+	color: rgb(23, 125, 240);
+}
+.aaa{
+color: #B6A2A4;
+}
+
+#custom-cards .bi {
+	font-size: 40px;
+}
+
+#custom-cards small {
+	font-size: 20px;
+	font-weight: bold;
+}
+.carousel-item img{
+    filter: brightness(70%);
+}
+
+
+.left-align {
+    text-align: left;
+}
+
+.icons p{
+    font-size: 22px;
+}
+
+
+footer h3{
+    font-weight: 600;
+}
+
+.footericons i{
+    font-size: 30px;
+    margin-right: 15px;
+    color: #1EAF54;
+}
+
+.footer-contact i {
+    color: #1EAF54;
+}
+.footer-contact a {
+    text-decoration: none;
+    color: #212529;
+}
+
+h1{
+    color: #1EAF54;
+}
+</style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="data:image/png;base64,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" alt="Logo"
+                    width="120" height="30" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active" href="http://localhost:8080/chisiamo"
+						aria-current="page" >Chi siamo?</a></li>
+						</ul></li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <a href="/login" class="btn btn-outline-success ms-auto">Login</a>
+            </div>
+        </div>
+    </nav>
+    <!---------------------------------------------------------------------->
+
+
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="https://www.sidassafety.it/wp-content/uploads/2018/01/sidas-energia-eolica.jpg"
+                    class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block left-align">
+                    <h2 class="display-6 fw-bold">Epic Energy Eolic</h2>
+                    <p class="fw-bolder">Il vento è una risorsa naturale che non si esaurisce e non produce emissioni di
+                        gas serra,<br> contribuendo quindi alla riduzione dell'inquinamento e delle emissioni di CO2.
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="https://www.viterbotoday.it/~media/horizontal-hi/70245782678080/impianto-fotovoltaico.jpg"
+                    class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block left-align">
+                    <h2 class="display-6 fw-bold">Epic Energy Solar</h2>
+                    <p class="fw-bolder"> L'energia solare è una delle fonti di energia rinnovabile più promettenti per
+                        il futuro, <br>poiché è inesauribile e disponibile ovunque ci sia la luce del sole. </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.docsity.com/documents_first_pages/2020/04/25/06faafc606586be1f2013211c6c7350d.png"
+                    class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block left-align">
+                    <h2 class="display-6 fw-bold">Epic Energy Hydro</h2>
+                    <p class="fw-bolder">L'energia idroelettrica è una delle fonti di energia rinnovabile più utilizzate
+                        al mondo <br>e può essere prodotta sia da grandi dighe che da piccole centrali idroelettriche.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+
+    <!-- Marketing messaging and featurettes
+        ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+
+
+    <div class="container col-xxl-8 px-3 py-3">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-md-6">
+                <img src="https://www.regione.lazio.it/sites/default/files/styles/large/public/2022-07/energia-100%25-rinnovabili-zero-emissioni-co2-entro-2050.jpg?itok=o_BR9gxh"
+                    class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-md-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Epic Energy</h1>
+                <p class="lead">La Epic Energy é una società internazionale  che si occupa di fornire energia rinnovabile a tutto il mondo utilizzando fonti di energia rinnovabile con degli impianti ecosostenibili. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container icons">
+        <div class="row icons pb-5 m border-bottom">
+            <div class="col-md-4 text-center">
+                <i class="bi bi-wind vento"></i>
+                <p>Energia eolica</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="bi bi-brightness-high sole"></i>
+                <p>Energia solare</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="bi bi-water acqua"></i>
+                <p>Energia idroelettrica</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container px-5 py-5" id="custom-cards">
+        <h2 class="pb-2 text-center display-6 fw-bolder text-dark">I nostri impianti più grandi del mondo</h2>
+
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark  shadow-lg"
+                    style="background-image: url('https://d2lxis1uiqe6st.cloudfront.net/wp-content/uploads/2022/01/good-life_0001_Livello-1.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5  mb-4 display-6 lh-1 fw-bold text-white">Parco eolico </h3>
+                        <ul class="d-flex list-unstyled mt-auto text-white">
+                            <li class="me-auto">
+                                <i class="bi bi-geo-alt-fill" ></i>
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small>Mare del Nord in Gran Bretagna</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark  shadow-lg"
+                    style="background-image: url('https://www.specchioeconomico.com/images/joomlart/article/949f13c1df30a468b76afab5b994011b.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5  mb-4 display-6 lh-1 fw-bold">Centrale idroelettrica</h3>
+                        <ul class="d-flex list-unstyled mt-auto text-white">
+                            <li class="me-auto">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small class="aaa">Paraguay e Brasile </small>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark  shadow-lg"
+                    style="background-image: url('https://ultra60.files.wordpress.com/2021/02/rinnova-montaltodicastro.jpg?w=800');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-white">Campo fotovoltaico<br><br><br><br>
+                        </h3>
+                        <ul class="d-flex list-unstyled mt-auto text-white">
+                            <li class="me-auto">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small>Cina</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <footer >
+        <div class="footer-top text-dark pb-3 border-top pt-3 mt-4">
+            <div class="container pt-3">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 footer-about wow fadeInUp">
+                        <img class="logo-footer" src="data:image/png;base64,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" alt="logo-footer"  width="200"
+                        height="50"
+                            data-at2x="assets/img/logo.png">
+                        <p class="pt-4">
+                            Cosa aspetti? Contattaci per avere i nostri servizi ecosostenibili per un futuro migliore per te e l'ambiente che ti circonda!
+                        </p>
+                     
+                    </div>
+                    <div class="col-md-4 col-lg-4 offset-lg-1 footer-contact wow fadeInDown">
+                        <h3>Contatti</h3>
+                        <p class="pt-3"><i class="fas fa-map-marker-alt"></i> Via Strada vecchia n.15 Pozzilli(IS), Italia</p>
+                        <p><i class="fas fa-phone"></i> Phone: (0865) 123 456 788 102</p>
+                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:hello@domain.com">epic@energy.com</a>
+                        </p>
+                        <p><i class="fab fa-skype"></i> Skype: epic_energy</p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 footer-social wow fadeInUp">
+                        <h3>Follow us</h3>
+                        <p class="footericons pt-3">
+                            <a href="#"><i class="fab fa-facebook "></i></a>
+                            <a href="#"><i class="fab fa-twitter "></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+    </footer>
+
+</body>
+
+</html>

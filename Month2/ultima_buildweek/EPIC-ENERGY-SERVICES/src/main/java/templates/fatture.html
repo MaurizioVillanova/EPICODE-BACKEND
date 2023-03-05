@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org"> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Energy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <style>
+    	h1 {
+    text-align: center;
+  }
+  #div {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    /*max-width: 940px !important;*/
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card-body .card-title {
+    color: #157347;
+  }
+  
+  .card-list li {
+    color: black;
+    list-style-type: none;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .card-list li:before {
+    content: "\2022";
+    color: #157347;
+    font-size: 1.2em;
+    position: absolute;
+    left: -15px;
+  }
+  
+  #btn-fatture {
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+  }
+
+  #fatture{
+    align-items: center;
+    max-width: auto;
+    
+  }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="display-6 fw-bold lh-1 mb-5 pt-5">Gestionale Clienti</h1>
+
+
+    <div class="container py-3">
+        <header>
+            <div
+                class="d-flex flex-column flex-md-row align-items-center justify-content-between pb-3 mb-4 border-bottom">
+                <a class="navbar-brand" href="/">
+                    <img src="https://cdn.discordapp.com/attachments/1062060184379347096/1081135334282231919/epic-energy-high-resolution-logo-color-on-transparent-background.png" alt="Logo"
+                        width="200" height="50" class="d-inline-block align-text-top">
+
+                </a>
+                <div class="d-flex flex-row align-items-center">
+                    <div class="pr-2 align-items-center pe-3">
+                        <label for="fullname">Inserisci il nome Cliente: </label>
+                    </div>
+                    <div class="pr-2 align-items-center ">
+                        <input type="text" id="nome" name="fullname" required class="form-control" />
+                    </div>
+                    <button class="btn btn-success ms-3" id="btn">Mostra</button>
+                </div>
+
+            </div>
+        </header>
+    </div>
+
+    <div class="container" id="cliente"></div>
+
+    <div class="container" id="test">
+        <div class="row">
+            <div>
+                <div id="fatture"></div>
+            </div>
+        </div>
+  
+
+        <script>
+            const btn = document.getElementById('btn');
+            const list = document.getElementById('list');
+            const clienteDiv = document.getElementById('cliente');
+            const fattureDiv = document.getElementById('fatture');
+            const fullnameInput = document.getElementById('nome');
+            let fattureMostrate = false;
+
+            btn.addEventListener('click', () => {
+                const nome = fullnameInput.value;
+                if (nome === '') {
+                    clienteDiv.innerHTML = '<li>Inserisci un nome</li>';
+                    return;
+                }
+                fetch(`http://localhost:8080/cliente/${nome}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const dataJson = JSON.stringify(data);
+                        clienteDiv.innerHTML = '';
+                        data.forEach((element) => {
+                            clienteDiv.innerHTML += `
+    <div class="card my-3 mx-auto col-lg-6 col-xl-4 shadow-lg" style="background-color: #F0F8FF;">
+        <div class="card-body">
+            <h4 class="card-title fw-bold text-center pb-4">${element.nomeContatto} ${element.cognomeContatto}</h4>
+            <ul class="card-list">
+        <li><strong>Email:</strong> ${element.email}</li>
+        <li><strong>Email Contatto:</strong> ${element.emailContatto}</li>
+        <li><strong>Fatturato Annuale:</strong> ${element.fatturatoAnnuale}</li>
+        <li><strong>Partita IVA:</strong> ${element.partitaIva}</li>
+        <li><strong>PEC:</strong> ${element.pec}</li>
+        <li><strong>Ragione Sociale:</strong> ${element.ragioneSociale}</li>
+        <li><strong>Telefono:</strong> ${element.telefono}</li>
+        <li><strong>Tipo Cliente:</strong> ${element.tipoCliente}</li>
+        </ul>
+
+        </div>
+        </div>
+
+
+        `;
+                        });
+
+                        // bottone per mostrare/ nascondere le fatture
+                        clienteDiv.innerHTML += `
+      <button id="btn-fatture" class="btn btn-success my-2 mb-4">Mostra Fatture</button>
+      `;
+
+                        // listener per il bottone delle fatture
+                        const btnFatture = document.getElementById('btn-fatture');
+                        btnFatture.addEventListener('click', () => {
+                            if (!fattureMostrate) {
+                                fetch(`http://localhost:8080/fatture-nomecliente/${nome}`)
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        fattureDiv.innerHTML = '';
+                                        data.forEach((fattura) => {
+                                            const dataFattura = new Date(fattura.data);
+                                            fattureDiv.innerHTML += `<div class="card my-2 fatture shadow-lg" style="background-color: #F0F8FF;">
+                                                <div class="card-body" >
+              <h5 class="card-title pb-3"><strong>Fattura numero:</strong> ${fattura.id}</h5>
+              <p class="card-text"><strong>Importo:</strong> ${fattura.importo}</p>
+              <p class="card-text"><strong>Anno:</strong> ${fattura.anno}</p>
+              <p class="card-text"><strong>Data:</strong> ${dataFattura.toLocaleDateString()}</p>
+              <a href="/clienti/${fattura.beServiceClienti.id}/fatture/${fattura.id}" target="_blank" class="btn btn-success my-2 mb-4">Visualizza Fattura</a>
+            </div>
+          </div>
+          `;
+                                        });
+                                    })
+                                    .catch((error) => {
+                                        console.log(error);
+                                        fattureDiv.innerHTML = `<li>${error}</li>`;
+                                    });
+                                btnFatture.textContent = 'Nascondi Fatture';
+                                fattureMostrate = true;
+                            } else {
+                                fattureDiv.innerHTML = '';
+                                btnFatture.textContent = 'Mostra Fatture';
+                                fattureMostrate = false;
+                            }
+                        });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        clienteDiv.innerHTML = `<li>${error}</li>`;
+                    });
+            });
+
+        </script>
+
+
+</body>
+
+</html>
